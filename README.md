@@ -1,7 +1,7 @@
 # ClimaTempo
 Projeto de um aplicativo para demonstar a temperatura da região (por geolocalização) e dos próximos 7 dias, usando Xamarin.FORMS 4.2 .
  
- # Plugin NuGet usados
+ # NuGet usados
   - Xamarin.Essentials
   - Newtonsoft.Json
   
