@@ -5,7 +5,7 @@ using System.Globalization;
 using ClimaTempo.Http;
 using ClimaTempo.Model;
 using Xamarin.Essentials;
-using Xamarin.Forms;
+using Location = Xamarin.Essentials.Location;
 
 namespace ClimaTempo.ViewModel
 {
@@ -26,6 +26,17 @@ namespace ClimaTempo.ViewModel
             {
                 isload = value;
                 this.Notify(nameof(IsLoad));
+            }
+        }
+
+        private string local;
+        public string Local
+        {
+            get { return local; }
+            set
+            {
+                local = value;
+                this.Notify(nameof(Local));
             }
         }
 
@@ -110,6 +121,7 @@ namespace ClimaTempo.ViewModel
                 // pegou uma localização?
                 if (location != null)
                 {
+                    Local = await ServiceHttp.GetCity(location.Latitude, location.Longitude).ConfigureAwait(false);
                     WeatherLocal = await ServiceHttp.GetWeather(location.Latitude, location.Longitude).ConfigureAwait(false);
                     Temperature = Math.Round(WeatherLocal.Currently.Temperature, 0).ToString();
                     var list = WeatherLocal.Daily.Data;

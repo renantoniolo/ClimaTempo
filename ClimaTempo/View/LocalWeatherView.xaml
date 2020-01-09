@@ -40,7 +40,7 @@
 
                 <Label Grid.Row="0"
                        HorizontalOptions="CenterAndExpand"
-                       Text="São Paulo"
+                       Text="{Binding Local}"
                        FontAttributes="Bold"
                        TextColor="{StaticResource Branco}" 
                        FontSize="36" />
