@@ -62,7 +62,7 @@ namespace ClimaTempo.ViewModel
             }
         }
 
-        private string backImage = "backgroud_light.jpg";
+        private string backImage = "bgDay.gif";
         public string BackImage
         {
             get { return backImage; }
@@ -97,7 +97,7 @@ namespace ClimaTempo.ViewModel
 
             // noite ou dia?
             if (DateTime.Now.Hour > 18 || DateTime.Now.Hour < 6)
-                BackImage = "backgroud_dark.jpg";
+                BackImage = "bgNight.gif";
         }
 
         #region Método

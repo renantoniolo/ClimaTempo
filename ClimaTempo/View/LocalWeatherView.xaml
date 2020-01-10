@@ -2,15 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ClimaTempo.View.LocalWeatherView"
-             xmlns:invert="clr-namespace:ClimaTempo.Util"
-             BackgroundImageSource="{Binding BackImage}"
-             Opacity="0.8">
+             xmlns:invert="clr-namespace:ClimaTempo.Util">
     <ContentPage.Resources>
         <ResourceDictionary>
             <invert:BoolConverter x:Key="BoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+
+    <Grid>
+
+        <Image
+            Aspect="AspectFill"            
+            IsAnimationPlaying="True"
+            Source="{Binding BackImage}" />
 
         <StackLayout
             Orientation="Vertical"
@@ -33,7 +38,7 @@
                    <RowDefinition Height="auto" />
                    <RowDefinition Height="25" />
                    <RowDefinition Height="auto" />
-                   <RowDefinition Height="240" />
+                   <RowDefinition Height="250" />
                    <RowDefinition Height="auto" />
                    <RowDefinition Height="30" />
                </Grid.RowDefinitions>
@@ -150,5 +155,7 @@
 
             </Grid>
         </StackLayout>
+
+            </Grid>
     </ContentPage.Content>
 </ContentPage>

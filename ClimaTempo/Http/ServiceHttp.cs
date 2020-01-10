@@ -19,8 +19,9 @@ namespace ClimaTempo.Http
         {
             try
             {
+                var url = "https://api.darksky.net/forecast/" + _key + "/" + Math.Round(lati, 6).ToString().Replace(',', '.') + "," + Math.Round(longe, 6).ToString().Replace(',', '.') + "?lang=pt&units=ca&exclude=hourly,alerts,flags";
 
-                var resp = await HttpUtil.GetAsync("https://api.darksky.net/forecast/"+ _key + "/"+ lati + ","+ longe + "?lang=pt&units=ca&exclude=hourly,alerts,flags");
+                var resp = await HttpUtil.GetAsync(url);
 
                 if (resp.IsSuccessStatusCode)
                 {
@@ -45,8 +46,9 @@ namespace ClimaTempo.Http
         {
             try
             {
+                var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + Math.Round(lati, 6).ToString().Replace(',','.') + "," + Math.Round(longe, 6).ToString().Replace(',', '.') + "&key=" + _keyGoogle;
 
-                var resp = await HttpUtil.GetAsync("https://maps.googleapis.com/maps/api/geocode/json?latlng="+ lati + ","+ longe + "&key=" + _keyGoogle);
+                var resp = await HttpUtil.GetAsync(url);
 
                 if (resp.IsSuccessStatusCode)
                 {
