@@ -11,7 +11,7 @@ namespace ClimaTempo.ViewModel
 {
     public class LocalWeatherViewModel : BaseViewModel
     {
-
+        
         private Location _location;
 
         #region Proprieade
@@ -62,6 +62,28 @@ namespace ClimaTempo.ViewModel
             }
         }
 
+        private string sensacaoTermica;
+        public string SensacaoTermica
+        {
+            get { return sensacaoTermica; }
+            set
+            {
+                sensacaoTermica = value;
+                this.Notify(nameof(SensacaoTermica));
+            }
+        }
+
+        private string ventoVelocidade;
+        public string VentoVelocidade
+        {
+            get { return ventoVelocidade; }
+            set
+            {
+                ventoVelocidade = value;
+                this.Notify(nameof(VentoVelocidade));
+            }
+        }
+
         private string backImage = "bgDay.gif";
         public string BackImage
         {
@@ -87,7 +109,7 @@ namespace ClimaTempo.ViewModel
         public String DataHr { get; set; } = String.Format(new CultureInfo("pt-BR"),"{0:dddd }", DateTime.Now) + " HOJE";
 
         #endregion
-
+        
 
         public LocalWeatherViewModel()
         {
@@ -99,7 +121,7 @@ namespace ClimaTempo.ViewModel
             if (DateTime.Now.Hour > 18 || DateTime.Now.Hour < 6)
                 BackImage = "bgNight.gif";
         }
-
+        
         #region Método
 
         internal async void ThisOnAppearing()
@@ -112,7 +134,7 @@ namespace ClimaTempo.ViewModel
                 // verifica se tem internet 
                 if (Connectivity.NetworkAccess != NetworkAccess.Internet)
                 {
-                    await App.Current.MainPage.DisplayAlert("Informativo", "Sem Internet", "ok");
+                    await App.Current.MainPage.DisplayAlert("Informativo", "Sem Conexão com a Internet.", "ok");
                     return;
                 }
                     
@@ -124,6 +146,8 @@ namespace ClimaTempo.ViewModel
                     Local = await ServiceHttp.GetCity(location.Latitude, location.Longitude).ConfigureAwait(false);
                     WeatherLocal = await ServiceHttp.GetWeather(location.Latitude, location.Longitude).ConfigureAwait(false);
                     Temperature = Math.Round(WeatherLocal.Currently.Temperature, 0).ToString();
+                    SensacaoTermica = Math.Round(WeatherLocal.Currently.ApparentTemperature, 0).ToString();
+                    VentoVelocidade = Math.Round(WeatherLocal.Currently.WindSpeed, 2).ToString();
                     var list = WeatherLocal.Daily.Data;
                     Summary = WeatherLocal.Currently.Summary;
 

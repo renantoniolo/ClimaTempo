@@ -7,7 +7,7 @@ using Newtonsoft.Json.Converters;
 
 namespace ClimaTempo.Model
 {
-
+    
     public partial class Weather
     {
         [JsonProperty("latitude")]

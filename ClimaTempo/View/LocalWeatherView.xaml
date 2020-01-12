@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ClimaTempo.View.LocalWeatherView"
-             xmlns:invert="clr-namespace:ClimaTempo.Util">
+             xmlns:invert="clr-namespace:ClimaTempo.Util"
+             BackgroundColor="#F6F6F6">
     <ContentPage.Resources>
         <ResourceDictionary>
             <invert:BoolConverter x:Key="BoolConverter" />
@@ -10,152 +11,221 @@
     </ContentPage.Resources>
     <ContentPage.Content>
 
-    <Grid>
+        <Grid>
+       
+            <Image
+                Aspect="AspectFill"            
+                IsAnimationPlaying="True"
+                Source="{Binding BackImage}" />
 
-        <Image
-            Aspect="AspectFill"            
-            IsAnimationPlaying="True"
-            Source="{Binding BackImage}" />
+            <ScrollView
+                VerticalScrollBarVisibility="Default"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
 
-        <StackLayout
-            Orientation="Vertical"
-            Margin="0">
+                <StackLayout
+                    Orientation="Vertical"
+                    Margin="0">
 
-            <ActivityIndicator
-                IsVisible="{Binding IsLoad}"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
-                Color="{StaticResource Branco}"
-                IsRunning="True"
-                WidthRequest="20" />
+                    <ActivityIndicator
+                        IsVisible="{Binding IsLoad}"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        Color="{StaticResource Branco}"
+                        IsRunning="True"
+                        WidthRequest="20" />
 
-            <Grid
-                IsVisible="{Binding IsLoad, Converter={StaticResource BoolConverter}}"
-                Margin="{OnPlatform Android='0,30', iOS='0,50'}">
-               <Grid.RowDefinitions>
-                   <RowDefinition Height="40" />
-                   <RowDefinition Height="20" />
-                   <RowDefinition Height="auto" />
-                   <RowDefinition Height="25" />
-                   <RowDefinition Height="auto" />
-                   <RowDefinition Height="250" />
-                   <RowDefinition Height="auto" />
-                   <RowDefinition Height="30" />
-               </Grid.RowDefinitions>
+                    <Grid
+                        IsVisible="{Binding IsLoad, Converter={StaticResource BoolConverter}}"
+                        Margin="{OnPlatform Android='0,30', iOS='0,50'}">
+                       <Grid.RowDefinitions>
+                           <RowDefinition Height="40" />
+                           <RowDefinition Height="20" />
+                           <RowDefinition Height="auto" />
+                           <RowDefinition Height="25" />
+                           <RowDefinition Height="auto" />
+                           <RowDefinition Height="250" />
+                           <RowDefinition Height="auto" />
+                           <RowDefinition Height="55" />
+                           <RowDefinition Height="auto" />
+                           <RowDefinition Height="30" />
+                       </Grid.RowDefinitions>
 
-                <Label Grid.Row="0"
-                       HorizontalOptions="CenterAndExpand"
-                       Text="{Binding Local}"
-                       FontAttributes="Bold"
-                       TextColor="{StaticResource Branco}" 
-                       FontSize="36" />
+                        <Label Grid.Row="0"
+                               HorizontalOptions="CenterAndExpand"
+                               Text="{Binding Local}"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource Branco}" 
+                               FontSize="36" />
             
-                <Label Grid.Row="1"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
-                       Text="{Binding Summary}"
-                       TextColor="{StaticResource Branco}"
-                       FontSize="Small" />
+                        <Label Grid.Row="1"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="Center"
+                               Text="{Binding Summary}"
+                               TextColor="{StaticResource Branco}"
+                               FontSize="Small" />
 
-                <Label Grid.Row="2"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Start"
-                       Text="{Binding Temperature, StringFormat='{0:F0}°'}"
-                       TextColor="{StaticResource Branco}"
-                       FontSize="80" />
+                        <Label Grid.Row="2"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="Start"
+                               Text="{Binding Temperature, StringFormat='{0:F0}°'}"
+                               TextColor="{StaticResource Branco}"
+                               FontSize="80" />
 
-                <Label Grid.Row="3"
-                       Margin="15,0"
-                       HorizontalOptions="StartAndExpand"
-                       VerticalOptions="End"
-                       Text="{Binding DataHr}"
-                       FontAttributes="Bold"
-                       TextColor="{StaticResource Branco}"
-                       FontSize="Default" />
+                        <Label Grid.Row="3"
+                               Margin="15,0"
+                               HorizontalOptions="StartAndExpand"
+                               VerticalOptions="End"
+                               Text="{Binding DataHr}"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource Branco}"
+                               FontSize="Default" />
 
-                <BoxView Grid.Row="4"
-                        HeightRequest="1"
-                        HorizontalOptions="FillAndExpand"
-                        BackgroundColor="{StaticResource Branco}"  />
+                        <BoxView Grid.Row="4"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="{StaticResource Branco}"  />
 
-                 <ListView
-                    Grid.Row="5"
-                    x:Name="days"
-                    Margin="15,5"
-                    IsEnabled="False"
-                    VerticalOptions="FillAndExpand"
-                    HasUnevenRows="True"
-                    SeparatorVisibility="None"
-                    ItemsSource="{Binding Dailys}" 
-                    HorizontalOptions="FillAndExpand"
-                    SelectionMode="None"
-                    BackgroundColor="Transparent" >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell Height="36">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
+                         <ListView
+                            Grid.Row="5"
+                            x:Name="days"
+                            Margin="15,5"
+                            IsEnabled="False"
+                            VerticalOptions="FillAndExpand"
+                            HasUnevenRows="True"
+                            SeparatorVisibility="None"
+                            ItemsSource="{Binding Dailys}" 
+                            HorizontalOptions="FillAndExpand"
+                            SelectionMode="None"
+                            BackgroundColor="Transparent" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="36">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
 
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="{Binding Day}"
-                                        HorizontalOptions="StartAndExpand"
-                                        FontSize="Medium"
-                                        VerticalOptions="Center"
-                                        FontAttributes="Bold"
-                                        TextColor="{StaticResource Branco}" />
+                                            <Label
+                                                Grid.Column="0"
+                                                Text="{Binding Day}"
+                                                HorizontalOptions="StartAndExpand"
+                                                FontSize="Medium"
+                                                VerticalOptions="Center"
+                                                FontAttributes="Bold"
+                                                TextColor="{StaticResource Branco}" />
 
-                                    <Image
-                                        Grid.Column="1"
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="Center"
-                                        Source="ic_cloud" />
+                                            <Image
+                                                Grid.Column="1"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center"
+                                                Source="ic_cloud" />
 
-                                    <Label
-                                        Grid.Column="2"
-                                        FontSize="Medium"
-                                        FontAttributes="Bold"
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="EndAndExpand"
-                                        Text="{Binding TemperatureHigh, StringFormat='{0:F0}°'}"
-                                        TextColor="{StaticResource Branco}" />
+                                            <Label
+                                                Grid.Column="2"
+                                                FontSize="Medium"
+                                                FontAttributes="Bold"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="EndAndExpand"
+                                                Text="{Binding TemperatureHigh, StringFormat='{0:F0}°'}"
+                                                TextColor="{StaticResource Branco}" />
 
-                                    <Label
-                                        Grid.Column="3"
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Text="{Binding TemperatureLow, StringFormat='{0:F0}°'}"
-                                        FontSize="Medium"
-                                        FontAttributes="Bold"
-                                        TextColor="{StaticResource Cinza}" />
+                                            <Label
+                                                Grid.Column="3"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="CenterAndExpand"
+                                                Text="{Binding TemperatureLow, StringFormat='{0:F0}°'}"
+                                                FontSize="Medium"
+                                                FontAttributes="Bold"
+                                                TextColor="{StaticResource Cinza}" />
 
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>                        
-                </ListView>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>                        
+                        </ListView>
 
-                <BoxView Grid.Row="6"
-                    HeightRequest="1"
-                    HorizontalOptions="FillAndExpand"
-                    BackgroundColor="{StaticResource Branco}" />
+                        <BoxView Grid.Row="6"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="{StaticResource Branco}" />
 
-                <Label
-                    Grid.Row="7"
-                    FontAttributes="Italic"
-                    FontSize="Small"
-                    HorizontalOptions="CenterAndExpand"
-                    Text="Clima Tempo - 2020 | Renan Toniolo Rocha"
-                    TextColor="{StaticResource Branco}" />
+                        <Grid Grid.Row="7"
+                              Margin="15,0"
+                              RowSpacing="0"
+                              ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
 
-            </Grid>
-        </StackLayout>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                FontSize="Small"
+                                VerticalOptions="End"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Vento"
+                                TextColor="{StaticResource Branco}" />
 
-            </Grid>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                FontSize="Large"
+                                FontAttributes="Bold"
+                                VerticalOptions="Start"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding VentoVelocidade, StringFormat='sso {0:F0} km/h'}"
+                                TextColor="{StaticResource Branco}" />
+
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="0"
+                                FontSize="Small"
+                                VerticalOptions="End"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Sensação Térmica"
+                                TextColor="{StaticResource Branco}" />
+
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                FontSize="Large"
+                                FontAttributes="Bold"
+                                VerticalOptions="Start"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding SensacaoTermica, StringFormat='{0:F0}°'}"
+                                TextColor="{StaticResource Branco}" />
+
+                        </Grid>
+
+                        <BoxView Grid.Row="8"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="{StaticResource Branco}" />
+
+                        <Label
+                            Grid.Row="9"
+                            FontAttributes="Italic"
+                            FontSize="Small"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Clima Tempo - 2020 | Renan Toniolo Rocha"
+                            TextColor="{StaticResource Branco}" />
+
+                    </Grid>
+                </StackLayout>
+                            
+            </ScrollView>
+
+        </Grid>
+
+
     </ContentPage.Content>
 </ContentPage>

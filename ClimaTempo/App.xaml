@@ -8,7 +8,7 @@
     <Application.Resources>
 
         <Color x:Key="Branco">#FFF</Color>
-        <Color x:Key="Cinza">#CCC</Color>
+        <Color x:Key="Cinza">#999999</Color>
 
     </Application.Resources>
 </Application>

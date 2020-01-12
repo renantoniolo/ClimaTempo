@@ -106,11 +106,11 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\backgroud_dark.jpg">
+    <AndroidResource Include="Resources\drawable\bgDay.gif">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\backgroud_light.jpg">
+    <AndroidResource Include="Resources\drawable\bgNight.gif">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
