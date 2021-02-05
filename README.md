@@ -1,5 +1,5 @@
 # App Clima Tempo
- Projeto de um aplicativo para demonstar a temperatura da região (por geolocalização) e dos próximos 7 dias.
+ Projeto de um aplicativo para demonstar a temperatura da região (por geolocalização) e dos próximos 7 dias usando o framework `xamrin forms`.
  
   ### Projeto desenvolvido ultilizando:
   - [x] Xamarin forms v4.4
