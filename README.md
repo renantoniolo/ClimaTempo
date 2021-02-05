@@ -1,14 +1,15 @@
 # ClimaTempo
-Projeto de um aplicativo para demonstar a temperatura da região (por geolocalização) e dos próximos 7 dias, usando Xamarin.FORMS 4.2 .
+Projeto de um aplicativo para demonstar a temperatura da região (por geolocalização) e dos próximos 7 dias, usando Xamarin.FORMS 4.4, com testes unitários usando o framework NUnit.
  
  # NuGet usados
   - Xamarin.Essentials
   - Newtonsoft.Json
+  - NUnit (teste unitário)
   
  
  # iPhone
-![Simulator Screen Shot - iPhone 11 - 2020-01-08 at 01 20 59](https://user-images.githubusercontent.com/8354309/71950555-70882180-31b6-11ea-93c0-e414b6350ffd.png)
+![Simulator Screen Shot - iPhone 11 - 2020-01-12 at 15 46 53](https://user-images.githubusercontent.com/8354309/72228940-c0396500-3589-11ea-8ff1-4c4c5bd481a0.png)
 
 
 # Android
-<img width="263" alt="Captura de Tela 2020-01-08 às 01 26 33" src="https://user-images.githubusercontent.com/8354309/71950617-b04f0900-31b6-11ea-99f1-1498c0448c06.png">
+![Screenshot_1578854767](https://user-images.githubusercontent.com/8354309/72228968-f4148a80-3589-11ea-89ba-4dac7e89beca.png)
